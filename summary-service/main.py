@@ -24,7 +24,6 @@ async def get_conn():
 
 def month_bounds(d: date):
     start = d.replace(day=1)
-    # next month start
     if start.month == 12:
         next_start = start.replace(year=start.year + 1, month=1, day=1)
     else:
@@ -93,7 +92,6 @@ async def summary_range(
     start: str = Query(..., description="YYYY-MM-DD"),
     end: str = Query(..., description="YYYY-MM-DD (exclusive)")
 ):
-    # parse dates safely
     try:
         start_d = datetime.strptime(start, "%Y-%m-%d").date()
         end_d   = datetime.strptime(end,   "%Y-%m-%d").date()
